@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-6 flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-gray-800">TubeSnatcher</h1>
+            <nav class="flex items-center space-x-4">
+                <a href="{% url 'home' %}" class="text-indigo-600 hover:underline px-4">Home</a>
+                <a href="{% url 'download' %}" class="text-indigo-600 hover:underline">Download</a>
+                <a href="{% url 'profile' %}" class="text-indigo-600 hover:underline">My Profile</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-6">
+        <div class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+            <h1 class="text-3xl font-bold text-center mb-6 text-gray-700">YouTube Video Downloader</h1>
+            <form method="POST" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <label for="url" class="block text-sm font-medium text-gray-700">YouTube Video URL</label>
+                    <input type="url" name="url" id="url" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div>
+                    <button type="submit"
+                        class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-500 transition ease-in-out duration-200">
+                        Download
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
